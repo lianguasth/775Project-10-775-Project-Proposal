@@ -1,0 +1,80 @@
+\documentclass[a4page]{article}
+
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{url}
+
+\author{Group Members \\ \text{Liangke Gui, Taiyuan Zhang, Chengliang Lian} \\ \texttt{liangkeg, taiyuanz, clian}
+}
+\title{10-775 Project Proposal \\ Multi-modal Cartoon Emotion Recognition}
+\date{}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%Diffusion distance
+%\end{abstract}
+
+\section{Problem Description}
+Human emotion recognition is an interesting topic in recent studies. Emotions in the movies are detected using machine learning algorithm for further research and commercial use, i.e. the movie classification and recommendation system based on emotions in the movie. Yet seldom researches had been conducted on the emotion recognition of cartoon movies, which differs from the physical emotions in its richness of color, lighting, shape and style. The features could vary a lot from movie to movie. The task is even more challenging when the research goal expands to recognize emotions of personified cartoon characters like cartoon cars.
+
+Our goal is to extract and generalize the feature of emotions in cartoon. Auxillary features from physical word could be applied to the process. Audio feature are also applied in the process of emotion recognition.
+
+
+
+\section{Data Set}
+The main data set used for training and evaluation is a cartoon movie data set developed internally in LTI lab. This dataset consists of 6 movies \footnote{Until now, only 4 out of 6 are labeled. We ourselves need to label the rest 2}. Each movie is divided into segments of various length, and each segment contains emotion annotation (there're seven emotions in total: happy, sad, surprised, disgust, fear, ...). The task of this project is to predict the label given the feature representation of the video segment. \\
+
+Considering the lacking of sufficient data in the aforementioned data set, we'll also consider using IEMOCAP\footnote{http://sail.usc.edu/iemocap/} as an auxillary training set. More details will be covered at later chapters.
+
+
+\section{Proposed Method}
+
+\subsection{Feature Design}
+We plan to investigate the usage of different feature sets so as to improve the final accuracy on our evaluation set. Initially, we're considering the following features:
+
+\begin{enumerate}
+\item Audio feature, i.e. MFCC
+\item Text feature on subtitle
+\item Visual features
+    \begin{enumerate}
+    \item SIFT, MOSIFT
+    \item Face-based feature
+    \item Feature learnt by convolutional neural network
+    \end{enumerate}
+\end{enumerate}
+
+Taking these as potential initial features, we may also apply feature-fusion techniques, such as multi-stage late fusion. 
+
+\subsection{Transfer Learning}
+
+We also plan to investigate whether it'd be beneficial to introduce auxillary data set and transfer learning technique to deal with lack of sufficient training data. As mentioned above, we might be able to improve the classification accuracy by integrating the knowledge about human emotions extracted from the IEMOCAP dataset. For example, we can use the emotion classifier trained on the IEMOCAP dataset to obtain a probabilistic distribution of cartoon characters' face images, and introduce this as anther feature. 
+
+\section{Experiment Design}
+
+For experiment design, we plan to divide the dataset into a training set and test set in a movie-wise manner, i.e. all segments from a movie can only either all belong to training set or all belong to test set. \\
+
+We'll compare the results from choosing different features. Since this is our main focus, we don't plan to spend too much effort on investigating different training models or propose new supervised learning models, therefore we plan to just use Logistic Regression or Kernel SVM as our classifier. \\
+
+
+\section{Plans and Requirement}
+
+Some of the features, such as audio and text features, are already extracted within LTI lab, which can be a good start point. We plan our project milestones as follows:
+
+\begin{enumerate}
+\item Feb 23 - Mar 18: Establish the system pipeline. That is, we can get result from using provided basic features
+\item Mar 19 - Apr 15: Develop visual-based features and add into pipeline. Also investigate transfer learning
+\item Apr 16 - End: System refinement and parameter tuning, optimization
+\end{enumerate}
+
+
+
+
+\begin{thebibliography}{10}
+
+\end{thebibliography}
+
+
+\end{document}
+
