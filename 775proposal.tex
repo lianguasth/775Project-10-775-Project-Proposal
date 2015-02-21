@@ -10,6 +10,7 @@
 \date{}
 
 \begin{document}
+
 \maketitle
 
 %\begin{abstract}
@@ -26,22 +27,21 @@ Our goal is to extract and generalize the feature of emotions in cartoon. Auxill
 \section{Data Set}
 The main data set used for training and evaluation is a cartoon movie data set developed internally in LTI lab. This dataset consists of 6 movies \footnote{Until now, only 4 out of 6 are labeled. We ourselves need to label the rest 2}. Each movie is divided into segments of various length, and each segment contains emotion annotation (there're seven emotions in total: happy, sad, surprised, disgust, fear, ...). The task of this project is to predict the label given the feature representation of the video segment. \\
 
-Considering the lacking of sufficient data in the aforementioned data set, we'll also consider using IEMOCAP\footnote{http://sail.usc.edu/iemocap/} as an auxillary training set. More details will be covered at later chapters.
+Considering the lacking of sufficient data in the aforementioned data set, we'll also consider using IEMOCAP\cite{busso2008iemocap} as an auxillary training set. More details will be covered at later chapters.
 
 
 \section{Proposed Method}
 
 \subsection{Feature Design}
-We plan to investigate the usage of different feature sets so as to improve the final accuracy on our evaluation set. Initially, we're considering the following features:
+We plan to investigate the usage of different feature sets so as to improve the final accuracy on our evaluation set. Initially, we're considering the following features\cite{zeng2009survey}\cite{ververidis2006emotional}\cite{el2011survey}
 
 \begin{enumerate}
 \item Audio feature, i.e. MFCC
 \item Text feature on subtitle
 \item Visual features
     \begin{enumerate}
-    \item SIFT, MOSIFT
-    \item Face-based feature
-    \item Feature learnt by convolutional neural network
+    \item color, SIFT, MOSIFT
+    \item Feature learnt by convolutional neural network\cite{kim2013deep}
     \end{enumerate}
 \end{enumerate}
 
@@ -55,7 +55,7 @@ We also plan to investigate whether it'd be beneficial to introduce auxillary da
 
 For experiment design, we plan to divide the dataset into a training set and test set in a movie-wise manner, i.e. all segments from a movie can only either all belong to training set or all belong to test set. \\
 
-We'll compare the results from choosing different features. Since this is our main focus, we don't plan to spend too much effort on investigating different training models or propose new supervised learning models, therefore we plan to just use Logistic Regression or Kernel SVM as our classifier. \\
+We'll compare the results from choosing different features. Since this is our main focus, we don't plan to spend too much effort on investigating different training models or propose new supervised learning models, therefore we plan to just use Logistic Regression or Kernel SVM as our classifier\cite{mower2011framework}. \\
 
 
 \section{Plans and Requirement}
@@ -72,9 +72,19 @@ Some of the features, such as audio and text features, are already extracted wit
 
 
 \begin{thebibliography}{10}
-
+\bibitem{busso2008iemocap}
+Busso C, Bulut M, Lee C C, et al. IEMOCAP: Interactive emotional dyadic motion capture database[J]. Language resources and evaluation, 2008, 42(4): 335-359.
+\bibitem{zeng2009survey}
+Zeng Z, Pantic M, Roisman G I, et al. A survey of affect recognition methods: Audio, visual, and spontaneous expressions[J]. Pattern Analysis and Machine Intelligence, IEEE Transactions on, 2009, 31(1): 39-58.
+\bibitem{mower2011framework}
+Mower E, Mataric M J, Narayanan S. A framework for automatic human emotion classification using emotion profiles[J]. Audio, Speech, and Language Processing, IEEE Transactions on, 2011, 19(5): 1057-1070.
+\bibitem{ververidis2006emotional}
+Ververidis D, Kotropoulos C. Emotional speech recognition: Resources, features, and methods[J]. Speech communication, 2006, 48(9): 1162-1181.
+\bibitem{el2011survey}
+El Ayadi M, Kamel M S, Karray F. Survey on speech emotion recognition: Features, classification schemes, and databases[J]. Pattern Recognition, 2011, 44(3): 572-587.
+\bibitem{kim2013deep}
+Kim Y, Lee H, Provost E M. Deep learning for robust feature generation in audiovisual emotion recognition[C]//Acoustics, Speech and Signal Processing (ICASSP), 2013 IEEE International Conference on. IEEE, 2013: 3687-3691.
 \end{thebibliography}
 
 
 \end{document}
-
