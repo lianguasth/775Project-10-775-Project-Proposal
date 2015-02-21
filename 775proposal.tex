@@ -49,7 +49,7 @@ Taking these as potential initial features, we may also apply feature-fusion tec
 
 \subsection{Transfer Learning}
 
-We also plan to investigate whether it'd be beneficial to introduce auxillary data set and transfer learning technique to deal with lack of sufficient training data. As mentioned above, we might be able to improve the classification accuracy by integrating the knowledge about human emotions extracted from the IEMOCAP dataset. For example, we can use the emotion classifier trained on the IEMOCAP dataset to obtain a probabilistic distribution of cartoon characters' face images, and introduce this as anther feature. 
+We also plan to investigate whether it'd be beneficial to introduce auxillary data set and transfer learning technique to deal with lack of sufficient training data. As mentioned above, we might be able to improve the classification accuracy by integrating the knowledge about human emotions extracted from the IEMOCAP dataset. For example, we can use the emotion classifier trained on the IEMOCAP dataset to obtain preliminary audio classifier, apply this classifier on the actual training and test set to obtain a probabilistic distribution over class labels, and introduce this as anther feature.  
 
 \section{Experiment Design}
 
